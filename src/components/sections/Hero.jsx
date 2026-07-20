@@ -166,7 +166,7 @@ export default function Hero() {
               <p className="text-sm text-ink-muted mb-4">Full-service planning, decor, and day-of coordination.</p>
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-purple">From ₦500,000</span>
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#25D366] text-white px-3.5 py-2 rounded-full">
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-purple text-white px-3.5 py-2 rounded-full">
                   Chat
                 </span>
               </div>

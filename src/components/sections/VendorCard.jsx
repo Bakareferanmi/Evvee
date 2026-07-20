@@ -80,7 +80,7 @@ export default function VendorCard({ vendor, delay = 0 }) {
               rel="noopener noreferrer"
               aria-label={`Chat with ${vendor.business_name} on WhatsApp`}
               onClick={handleChatClick}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#25D366] text-white px-3.5 py-2 rounded-full hover:brightness-95 transition-all"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold bg-purple text-white px-3.5 py-2 rounded-full hover:bg-purple-deep transition-all"
             >
               <FaWhatsapp size={14} /> Chat
             </a>
