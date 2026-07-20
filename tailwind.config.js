@@ -4,38 +4,50 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#FFFFFF',
-        surface: '#F7F7F5',
-        elevated: '#FFFFFF',
-        chip: '#F2F2EE',
-        border: '#E7E7E2',
-        purple: {
-          DEFAULT: '#7B2FFF',
-          deep: '#5B1FD1',
-          dim: 'rgba(123,47,255,0.06)',
-        },
-        lime: {
-          DEFAULT: '#C8FF00',
-          deep: '#5C7A00',
-          dim: 'rgba(92,122,0,0.08)',
-        },
+        // Warm ivory paper — replaces pure white/near-white surfaces
+        bg: '#FBF3E4',
+        surface: '#F3E7CE',
+        elevated: '#FFFDF7',
+        chip: '#F1E4C8',
+        border: '#E4D3AC',
+        // Deep aubergine-ink — replaces flat black text tones
         ink: {
-          DEFAULT: '#15151D',
-          muted: '#68687A',
-          subtle: '#9D9DAB',
+          DEFAULT: '#1B0F14',
+          muted: '#6E5D50',
+          subtle: '#A8977F',
+        },
+        // "purple" token kept for compatibility with unedited components —
+        // remapped to aso-ebi wine so the whole app reskins consistently
+        purple: {
+          DEFAULT: '#7A1440',
+          deep: '#5A0E30',
+          dim: 'rgba(122,20,64,0.07)',
+        },
+        // "lime" token kept for compatibility — remapped to foil gold
+        lime: {
+          DEFAULT: '#C79A3D',
+          deep: '#8A6A24',
+          dim: 'rgba(199,154,61,0.12)',
+        },
+        emerald: {
+          DEFAULT: '#1F6B4D',
+          deep: '#164E39',
+          dim: 'rgba(31,107,77,0.1)',
         },
       },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        display: ['Fraunces', 'serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
       },
       borderRadius: {
-        sm: '10px',
-        md: '14px',
-        lg: '20px',
+        sm: '8px',
+        md: '12px',
+        lg: '18px',
       },
       boxShadow: {
-        sm: '0 1px 4px rgba(20,20,28,0.06)',
-        md: '0 12px 28px rgba(20,20,28,0.09)',
+        sm: '0 1px 4px rgba(27,15,20,0.08)',
+        md: '0 14px 32px rgba(27,15,20,0.14)',
       },
       transitionTimingFunction: {
         evvee: 'cubic-bezier(0.2,0.6,0.2,1)',

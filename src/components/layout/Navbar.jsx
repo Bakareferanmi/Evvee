@@ -33,11 +33,12 @@ export default function Navbar() {
     : '?'
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] py-3.5 bg-white/80 backdrop-blur-md border-b border-black/[0.06]">
+    <nav className="fixed top-0 left-0 right-0 z-[100] py-3.5 bg-bg/90 backdrop-blur-md border-b border-border">
       <div className="container-evvee flex items-center justify-between">
-        <a href="#" className="text-2xl font-extrabold tracking-tight flex items-center">
+        <a href="#" className="text-2xl font-display font-semibold tracking-tight flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-lime" aria-hidden="true" />
           <span className="text-ink">Ev</span>
-          <span className="text-lime-deep">vee</span>
+          <span className="text-purple italic">vee</span>
         </a>
 
         <ul className="hidden md:flex gap-7 list-none">

@@ -6,13 +6,6 @@ import { GiForkKnifeSpoon, GiLipstick } from 'react-icons/gi'
 import LocationPicker from './LocationPicker'
 import { useApp } from '../../context/AppContext'
 
-const collage = [
-  'https://images.unsplash.com/photo-1661332306744-70f9ed1a7f40?auto=format&fit=crop&w=700&q=75',
-  'https://images.unsplash.com/photo-1709477542149-f4e0e21d590b?auto=format&fit=crop&w=700&q=75',
-  'https://images.unsplash.com/photo-1571266028243-d220c6a7edbf?auto=format&fit=crop&w=700&q=75',
-  'https://images.unsplash.com/photo-1576842546422-60562b9242ae?auto=format&fit=crop&w=700&q=75',
-]
-
 const popularTags = [
   { label: 'Lagos DJ', icon: FiHeadphones },
   { label: 'Abuja photographer', icon: FiCamera },
@@ -47,21 +40,24 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden pt-28 sm:pt-32 pb-16">
+    <section className="relative overflow-hidden pt-28 sm:pt-32 pb-20 bg-ink text-bg">
+      {/* subtle gold rule frame, invitation-card style */}
+      <div className="absolute inset-4 sm:inset-6 border border-lime/20 rounded-lg pointer-events-none hidden md:block" />
       <div
-        className="absolute -top-24 -right-20 w-[560px] h-[560px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(123,47,255,0.07) 0%, transparent 70%)' }}
+        className="absolute -top-32 -left-32 w-[420px] h-[420px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(199,154,61,0.14) 0%, transparent 70%)' }}
       />
-      <div className="container-evvee grid lg:grid-cols-2 gap-12 items-center relative">
+
+      <div className="container-evvee grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center relative">
         <div>
           <motion.div
             custom={0}
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="inline-flex items-center gap-2 font-mono text-[0.7rem] font-medium tracking-[0.1em] uppercase text-lime-deep bg-lime-dim border border-lime-deep/20 px-3.5 py-1.5 rounded-full mb-6"
+            className="inline-flex items-center gap-2 font-mono text-[0.7rem] font-medium tracking-[0.14em] uppercase text-lime border border-lime/30 px-3.5 py-1.5 rounded-full mb-7"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-lime-deep animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-lime" />
             Nigeria&apos;s event vendor marketplace
           </motion.div>
 
@@ -70,16 +66,9 @@ export default function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="text-[clamp(2.2rem,7vw,4.2rem)] font-extrabold leading-[1.05] tracking-tight mb-5 max-w-xl"
+            className="text-[clamp(2.4rem,6.5vw,4rem)] font-display font-semibold leading-[1.02] tracking-tight mb-5 max-w-xl text-bg"
           >
-            Find the{' '}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(100deg, #7B2FFF 10%, #9B5CFF 50%, #7B2FFF 90%)' }}
-            >
-              right vendor
-            </span>{' '}
-            for every <span className="text-lime-deep">occasion.</span>
+            Every occasion deserves the <span className="italic text-lime">right</span> vendor.
           </motion.h1>
 
           <motion.p
@@ -87,30 +76,18 @@ export default function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="text-[1.05rem] text-ink-muted max-w-md mb-9 leading-relaxed"
+            className="text-[1.05rem] text-bg/70 max-w-md mb-9 leading-relaxed font-sans"
           >
-            Photographers, caterers, DJs, makeup artists and more, all verified, all across Nigeria. Contact them
-            directly on WhatsApp.
+            Photographers, caterers, DJs, makeup artists and more — verified, and across Nigeria. Skip the
+            back-and-forth, message them directly on WhatsApp.
           </motion.p>
 
-          <motion.div custom={3} initial="hidden" animate="show" variants={fadeUp} className="flex flex-wrap gap-3 mb-5">
-            <button
-              className="btn-lime btn-lg"
-              onClick={() => document.getElementById('hero-search')?.focus()}
-            >
-              <FiSearch /> Find a vendor
-            </button>
-            <button className="btn-ghost btn-lg" onClick={() => openModal('list-business')}>
-              List your business <FiArrowRight />
-            </button>
-          </motion.div>
-
           <motion.div
-            custom={4}
+            custom={3}
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="bg-white border border-border rounded-lg shadow-sm p-2 mb-6"
+            className="bg-bg text-ink rounded-lg shadow-md p-2 mb-6 max-w-lg"
           >
             <div className="flex items-center gap-2 px-2 py-1.5">
               <FiSearch className="text-ink-subtle" />
@@ -121,7 +98,7 @@ export default function Hero() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search photographers, DJs, caterers…"
                 aria-label="Search vendors"
-                className="flex-1 text-sm outline-none placeholder:text-ink-subtle"
+                className="flex-1 text-sm outline-none placeholder:text-ink-subtle bg-transparent"
               />
             </div>
             <div className="flex items-center gap-2 border-t border-border px-2 pt-2 mt-1 flex-wrap">
@@ -135,8 +112,14 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <motion.div custom={5} initial="hidden" animate="show" variants={fadeUp} className="flex flex-wrap items-center gap-2 mb-8">
-            <span className="text-xs text-ink-subtle">Popular:</span>
+          <motion.div custom={4} initial="hidden" animate="show" variants={fadeUp} className="flex flex-wrap gap-3 mb-8">
+            <button className="btn-ghost btn-lg border-bg/25 text-bg hover:border-lime hover:bg-lime/10" onClick={() => openModal('list-business')}>
+              List your business <FiArrowRight />
+            </button>
+          </motion.div>
+
+          <motion.div custom={5} initial="hidden" animate="show" variants={fadeUp} className="flex flex-wrap items-center gap-2">
+            <span className="text-xs text-bg/50 font-mono uppercase tracking-wide">Popular:</span>
             {popularTags.map(({ label, icon: Icon }) => (
               <button
                 key={label}
@@ -144,41 +127,55 @@ export default function Hero() {
                   setQuery(label)
                   document.getElementById('hero-search')?.focus()
                 }}
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-muted bg-chip px-3 py-1.5 rounded-full hover:text-ink transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-bg/80 bg-bg/10 border border-bg/10 px-3 py-1.5 rounded-full hover:bg-bg/15 hover:text-lime transition-colors"
               >
                 <Icon size={12} /> {label}
               </button>
             ))}
           </motion.div>
+        </div>
 
-          <motion.div custom={6} initial="hidden" animate="show" variants={fadeUp}>
-            <div className="flex flex-col">
-              <span ref={statRef} className="text-3xl font-extrabold">
-                0
+        {/* Ticket-styled preview card — the signature element */}
+        <motion.div
+          custom={2}
+          initial="hidden"
+          animate="show"
+          variants={fadeUp}
+          className="hidden lg:block relative"
+        >
+          <div className="bg-bg text-ink rounded-lg shadow-md overflow-hidden max-w-sm mx-auto rotate-[-2deg]">
+            <div className="relative h-48">
+              <img
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=75"
+                alt=""
+                className="w-full h-full object-cover"
+              />
+              <span className="absolute top-3 left-3 inline-flex items-center gap-1 text-[0.68rem] font-semibold px-2 py-1 rounded-full bg-lime text-white">
+                <FiStar size={11} /> Featured
               </span>
-              <span className="text-xs text-ink-muted">States covered</span>
             </div>
-          </motion.div>
-        </div>
-
-        <div className="hidden lg:block relative" aria-hidden="true">
-          <div className="grid grid-cols-2 gap-3">
-            <div className="flex flex-col gap-3">
-              <img src={collage[0]} alt="" className="rounded-lg h-64 object-cover" loading="lazy" />
-              <img src={collage[1]} alt="" className="rounded-lg h-40 object-cover" loading="lazy" />
-            </div>
-            <div className="flex flex-col gap-3 mt-8">
-              <img src={collage[2]} alt="" className="rounded-lg h-40 object-cover" loading="lazy" />
-              <img src={collage[3]} alt="" className="rounded-lg h-64 object-cover" loading="lazy" />
+            <div className="p-5 ticket-perforation">
+              <div className="flex items-center justify-between text-xs text-ink-muted mb-1.5 font-mono uppercase tracking-wide">
+                <span>Event coordination</span>
+                <span ref={statRef} className="text-ink font-semibold">
+                  0
+                </span>
+                <span className="sr-only">states covered</span>
+              </div>
+              <div className="font-display font-semibold text-lg mb-1">Momentum Events &amp; Co.</div>
+              <p className="text-sm text-ink-muted mb-4">Full-service planning, decor, and day-of coordination.</p>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-semibold text-purple">From ₦500,000</span>
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#25D366] text-white px-3.5 py-2 rounded-full">
+                  Chat
+                </span>
+              </div>
             </div>
           </div>
-          <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-white shadow-md rounded-full px-4 py-2.5 flex items-center gap-2 text-sm font-medium whitespace-nowrap">
-            <span className="flex items-center gap-1 text-lime-deep font-bold">
-              <FiStar className="fill-lime-deep" /> 4.9
-            </span>
-            Loved by planners across Nigeria
+          <div className="absolute -bottom-4 -right-2 bg-lime text-white shadow-md rounded-full px-4 py-2.5 flex items-center gap-2 text-sm font-medium whitespace-nowrap rotate-[3deg]">
+            <FiStar className="fill-white" /> 4.9 average rating
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

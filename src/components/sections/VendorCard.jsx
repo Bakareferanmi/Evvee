@@ -24,7 +24,7 @@ export default function VendorCard({ vendor, delay = 0 }) {
 
   return (
     <Reveal scale delay={delay}>
-      <div className="bg-white border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+      <div className="bg-elevated border border-border rounded-lg overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 ease-evvee">
         <div className="relative h-44">
           <img src={vendor.cover_photo_url} alt={vendor.business_name} className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/40 to-transparent" />
@@ -44,14 +44,14 @@ export default function VendorCard({ vendor, delay = 0 }) {
           </button>
         </div>
 
-        <div className="p-4">
-          <div className="flex items-center justify-between text-xs text-ink-muted mb-1.5">
-            <span className="font-medium text-purple">{vendor.category}</span>
+        <div className="p-4 ticket-perforation">
+          <div className="flex items-center justify-between text-xs text-ink-muted mb-1.5 font-mono uppercase tracking-wide">
+            <span className="font-medium text-purple normal-case font-sans">{vendor.category}</span>
             <span className="flex items-center gap-1">
               <FiMapPin size={11} /> {vendor.city}
             </span>
           </div>
-          <div className="font-bold mb-1">{vendor.business_name}</div>
+          <div className="font-display font-semibold mb-1">{vendor.business_name}</div>
           <div className="flex items-center gap-1 text-xs mb-1.5">
             {vendor.rating_avg ? (
               <>
