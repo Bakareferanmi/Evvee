@@ -1,0 +1,138 @@
+export const vendors = [
+  {
+    id: 'v1',
+    business_name: 'Lumière Wedding Photography',
+    category: 'Photography & Video',
+    category_slug: 'photography-video',
+    city: 'Lagos',
+    tagline: 'Cinematic wedding stories, shot on film and digital.',
+    starting_price: 350000,
+    rating_avg: 4.9,
+    rating_count: 128,
+    is_verified: true,
+    is_featured: true,
+    whatsapp_number: '2348012345001',
+    cover_photo_url:
+      'https://images.unsplash.com/photo-1645827042168-4fb0cdd0bf7e?auto=format&fit=crop&w=800&q=75',
+  },
+  {
+    id: 'v2',
+    business_name: 'DJ Frequency',
+    category: 'Entertainment',
+    category_slug: 'entertainment',
+    city: 'Abuja',
+    tagline: 'Weddings, corporate nights, and owambe specialists.',
+    starting_price: 180000,
+    rating_avg: 4.8,
+    rating_count: 96,
+    is_verified: true,
+    is_featured: true,
+    whatsapp_number: '2348012345002',
+    cover_photo_url:
+      'https://images.unsplash.com/photo-1571266028243-d220c6a7edbf?auto=format&fit=crop&w=800&q=75',
+  },
+  {
+    id: 'v3',
+    business_name: "Glam by Adaeze",
+    category: 'Beauty & Styling',
+    category_slug: 'beauty-styling',
+    city: 'Ibadan',
+    tagline: 'Bridal makeup that photographs as good as it feels.',
+    starting_price: 65000,
+    rating_avg: 5.0,
+    rating_count: 74,
+    is_verified: true,
+    is_featured: true,
+    whatsapp_number: '2348012345003',
+    cover_photo_url:
+      'https://images.unsplash.com/photo-1576842546422-60562b9242ae?auto=format&fit=crop&w=800&q=75',
+  },
+  {
+    id: 'v4',
+    business_name: "Taste Buds Catering Co.",
+    category: 'Food & Catering',
+    category_slug: 'food-catering',
+    city: 'Lagos',
+    tagline: 'Nigerian and continental menus for 50–2,000 guests.',
+    starting_price: 250000,
+    rating_avg: 4.7,
+    rating_count: 152,
+    is_verified: true,
+    is_featured: false,
+    whatsapp_number: '2348012345004',
+    cover_photo_url:
+      'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=75',
+  },
+  {
+    id: 'v5',
+    business_name: 'Momentum Events & Co.',
+    category: 'Event Coordination',
+    category_slug: 'event-coordination',
+    city: 'Port Harcourt',
+    tagline: 'Full-service planning, decor, and day-of coordination.',
+    starting_price: 500000,
+    rating_avg: 4.9,
+    rating_count: 61,
+    is_verified: true,
+    is_featured: true,
+    whatsapp_number: '2348012345005',
+    cover_photo_url:
+      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=75',
+  },
+  {
+    id: 'v6',
+    business_name: 'SecureGuard Events',
+    category: 'Support Services',
+    category_slug: 'support-services',
+    city: 'Lagos',
+    tagline: 'Licensed ushers, security, and logistics crews.',
+    starting_price: 45000,
+    rating_avg: 4.6,
+    rating_count: 33,
+    is_verified: false,
+    is_featured: false,
+    whatsapp_number: '2348012345006',
+    cover_photo_url:
+      'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=75',
+  },
+  {
+    id: 'v7',
+    business_name: 'Kano Frames Studio',
+    category: 'Photography & Video',
+    category_slug: 'photography-video',
+    city: 'Kano',
+    tagline: 'Documentary-style coverage for weddings and naming ceremonies.',
+    starting_price: 200000,
+    rating_avg: 4.8,
+    rating_count: 41,
+    is_verified: true,
+    is_featured: false,
+    whatsapp_number: '2348012345007',
+    cover_photo_url:
+      'https://images.unsplash.com/photo-1509927083803-4bd519298ac4?auto=format&fit=crop&w=800&q=75',
+  },
+  {
+    id: 'v8',
+    business_name: 'Naija Beats Live Band',
+    category: 'Entertainment',
+    category_slug: 'entertainment',
+    city: 'Lagos',
+    tagline: 'Afrobeat, highlife, and gospel — a full live band.',
+    starting_price: 400000,
+    rating_avg: 4.9,
+    rating_count: 58,
+    is_verified: true,
+    is_featured: false,
+    whatsapp_number: '2348012345008',
+    cover_photo_url:
+      'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=75',
+  },
+]
+
+export function formatNaira(amount) {
+  return `₦${Number(amount).toLocaleString('en-NG')}`
+}
+
+export function vendorsByCategory(slug) {
+  return vendors.filter((v) => v.category_slug === slug)
+}

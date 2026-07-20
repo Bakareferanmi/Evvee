@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-sans font-bold;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(123, 47, 255, 0.18);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-surface;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+:focus-visible {
+  outline: 2px solid #7b2fff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.container-evvee {
+  @apply w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 ease-evvee whitespace-nowrap active:scale-[0.97];
+}
+
+.btn-lime {
+  @apply btn bg-lime text-ink px-5 py-2.5 shadow-[0_4px_14px_rgba(92,122,0,0.16)] hover:bg-[#b8ef00] hover:shadow-[0_6px_18px_rgba(92,122,0,0.22)] hover:-translate-y-px;
+}
+
+.btn-purple {
+  @apply btn bg-purple text-white px-5 py-2.5 hover:bg-purple-deep;
+}
+
+.btn-ghost {
+  @apply btn bg-transparent text-ink border border-border px-[18px] py-[9px] hover:border-purple hover:bg-purple-dim;
+}
+
+.btn-lg {
+  @apply text-[0.95rem] px-6 py-[13px];
+}
+
+.btn-sm {
+  @apply text-[0.82rem] px-[18px] py-2;
+}
+
+.section-eyebrow {
+  @apply font-mono text-[0.7rem] font-medium tracking-[0.1em] uppercase text-lime-deep mb-3;
+}
+
+.section-title {
+  @apply text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold tracking-tight;
+}
+
+.section-title-accent {
+  @apply text-purple;
+}
+
+.input {
+  @apply w-full bg-white border border-border rounded-md px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-purple;
+}
+
+.textarea {
+  @apply input resize-none;
+}
