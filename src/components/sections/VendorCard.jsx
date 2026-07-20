@@ -24,7 +24,7 @@ export default function VendorCard({ vendor, delay = 0 }) {
 
   return (
     <Reveal scale delay={delay}>
-      <div className="bg-elevated border border-border rounded-lg overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 ease-evvee">
+      <div className="bg-white border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
         <div className="relative h-44">
           <img src={vendor.cover_photo_url} alt={vendor.business_name} className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/40 to-transparent" />
@@ -44,14 +44,14 @@ export default function VendorCard({ vendor, delay = 0 }) {
           </button>
         </div>
 
-        <div className="p-4 ticket-perforation">
-          <div className="flex items-center justify-between text-xs text-ink-muted mb-1.5 font-mono uppercase tracking-wide">
-            <span className="font-medium text-purple normal-case font-sans">{vendor.category}</span>
+        <div className="p-4">
+          <div className="flex items-center justify-between text-xs text-ink-muted mb-1.5">
+            <span className="font-medium text-purple">{vendor.category}</span>
             <span className="flex items-center gap-1">
               <FiMapPin size={11} /> {vendor.city}
             </span>
           </div>
-          <div className="font-display font-semibold mb-1">{vendor.business_name}</div>
+          <div className="font-bold mb-1">{vendor.business_name}</div>
           <div className="flex items-center gap-1 text-xs mb-1.5">
             {vendor.rating_avg ? (
               <>
@@ -80,7 +80,7 @@ export default function VendorCard({ vendor, delay = 0 }) {
               rel="noopener noreferrer"
               aria-label={`Chat with ${vendor.business_name} on WhatsApp`}
               onClick={handleChatClick}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold bg-purple text-white px-3.5 py-2 rounded-full hover:bg-purple-deep transition-all"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#25D366] text-white px-3.5 py-2 rounded-full hover:brightness-95 transition-all"
             >
               <FaWhatsapp size={14} /> Chat
             </a>
@@ -95,7 +95,7 @@ function Badge({ tint, icon, label }) {
   return (
     <span
       className={`inline-flex items-center gap-1 text-[0.68rem] font-semibold px-2 py-1 rounded-full ${
-        tint === 'lime' ? 'bg-lime text-white' : 'bg-purple text-white'
+        tint === 'lime' ? 'bg-lime text-ink' : 'bg-purple text-white'
       }`}
     >
       {icon} {label}
