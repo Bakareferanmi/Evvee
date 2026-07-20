@@ -54,7 +54,7 @@ export default function TestimonialTicker() {
             <div className="flex gap-2 mb-3">
               <span
                 className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold ${
-                  t.tint === 'lime' ? 'bg-lime text-ink' : 'bg-purple text-white'
+                  t.tint === 'lime' ? 'bg-lime text-white' : 'bg-purple text-white'
                 }`}
               >
                 {t.initials}
