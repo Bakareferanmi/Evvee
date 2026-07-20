@@ -15,9 +15,9 @@ export default {
           dim: 'rgba(123,47,255,0.06)',
         },
         lime: {
-          DEFAULT: '#C8FF00',
-          deep: '#5C7A00',
-          dim: 'rgba(92,122,0,0.08)',
+          DEFAULT: '#7B2FFF',
+          deep: '#5B1FD1',
+          dim: 'rgba(123,47,255,0.06)',
         },
         ink: {
           DEFAULT: '#15151D',
