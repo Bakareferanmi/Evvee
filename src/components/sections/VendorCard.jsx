@@ -95,7 +95,7 @@ function Badge({ tint, icon, label }) {
   return (
     <span
       className={`inline-flex items-center gap-1 text-[0.68rem] font-semibold px-2 py-1 rounded-full ${
-        tint === 'lime' ? 'bg-lime text-ink' : 'bg-purple text-white'
+        tint === 'lime' ? 'bg-lime text-white' : 'bg-purple text-white'
       }`}
     >
       {icon} {label}

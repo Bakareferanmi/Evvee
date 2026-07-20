@@ -16,18 +16,17 @@ export default {
           muted: '#6E5D50',
           subtle: '#A8977F',
         },
-        // "purple" token kept for compatibility with unedited components —
-        // remapped to aso-ebi wine so the whole app reskins consistently
+        // "purple" token — back to the original bright violet accent
         purple: {
-          DEFAULT: '#7A1440',
-          deep: '#5A0E30',
-          dim: 'rgba(122,20,64,0.07)',
+          DEFAULT: '#7B2FFF',
+          deep: '#5B1FD1',
+          dim: 'rgba(123,47,255,0.07)',
         },
-        // "lime" token kept for compatibility — remapped to foil gold
+        // "lime" token aliased to the same purple, for one uniform accent color
         lime: {
-          DEFAULT: '#C79A3D',
-          deep: '#8A6A24',
-          dim: 'rgba(199,154,61,0.12)',
+          DEFAULT: '#7B2FFF',
+          deep: '#5B1FD1',
+          dim: 'rgba(123,47,255,0.07)',
         },
         emerald: {
           DEFAULT: '#1F6B4D',
