@@ -90,6 +90,11 @@ img {
 
 .section-title-accent {
   @apply text-purple;
+  text-shadow: 0 0 18px rgba(123, 47, 255, 0.35), 0 0 36px rgba(123, 47, 255, 0.15);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 18px rgba(123, 47, 255, 0.35), 0 0 36px rgba(123, 47, 255, 0.15);
 }
 
 .input {
@@ -99,4 +104,3 @@ img {
 .textarea {
   @apply input resize-none;
 }
-

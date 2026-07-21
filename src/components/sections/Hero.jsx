@@ -74,12 +74,12 @@ export default function Hero() {
           >
             Find the{' '}
             <span
-              className="bg-clip-text text-transparent"
+              className="bg-clip-text text-transparent text-glow-purple"
               style={{ backgroundImage: 'linear-gradient(100deg, #7B2FFF 10%, #9B5CFF 50%, #7B2FFF 90%)' }}
             >
               right vendor
             </span>{' '}
-            for every <span className="text-lime-deep">occasion.</span>
+            for every <span className="text-lime-deep text-glow-purple">occasion.</span>
           </motion.h1>
 
           <motion.p
