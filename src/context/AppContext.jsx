@@ -17,7 +17,7 @@ function loadFromStorage(key, fallback) {
  * API/Supabase calls later without touching any component.
  */
 export function AppProvider({ children }) {
-  const [user, setUser] = useState(() => loadFromStorage('evvee_user', null)) // { name, email, avatarUrl }
+  const [user, setUser] = useState(() => loadFromStorage('evvee_user', null)) // { name, email, avatarUrl, joinedAt, phone, city, bio }
   const [savedVendorIds, setSavedVendorIds] = useState(() => loadFromStorage('evvee_saved', []))
   const [bookings, setBookings] = useState(() => loadFromStorage('evvee_bookings', []))
   const [activeModal, setActiveModal] = useState(null) // 'login' | 'signup' | 'list-business' | 'bookings' | 'saved' | 'category' | 'blog' | 'profile' | null
@@ -46,7 +46,7 @@ export function AppProvider({ children }) {
   }, [])
 
   const login = useCallback((name, email) => {
-    setUser({ name, email })
+    setUser({ name, email, joinedAt: new Date().toISOString() })
     closeModal()
   }, [closeModal])
 

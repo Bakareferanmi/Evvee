@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { FiCamera, FiHeart, FiClipboard, FiCheck } from 'react-icons/fi'
+import { AnimatePresence, motion } from 'framer-motion'
+import { FiCamera, FiHeart, FiClipboard, FiCheck, FiPhone, FiMapPin, FiCalendar, FiArrowRight } from 'react-icons/fi'
 import Modal from '../ui/Modal'
 import { useApp } from '../../context/AppContext'
 
@@ -15,21 +16,35 @@ const AVATAR_PRESETS = [
 ]
 
 export default function ProfileModal() {
-  const { activeModal, closeModal, user, updateProfile, savedVendorIds, bookings } = useApp()
+  const { activeModal, closeModal, openModal, user, updateProfile, savedVendorIds, bookings } = useApp()
   const open = activeModal === 'profile'
   const fileInputRef = useRef(null)
+  const wasOpen = useRef(false)
 
   const [nameDraft, setNameDraft] = useState('')
   const [avatarDraft, setAvatarDraft] = useState('')
-  const [saved, setSaved] = useState(false)
+  const [phoneDraft, setPhoneDraft] = useState('')
+  const [cityDraft, setCityDraft] = useState('')
+  const [bioDraft, setBioDraft] = useState('')
+  const [toast, setToast] = useState('')
 
+  // Only load fields from `user` the moment the modal transitions from closed -> open,
+  // never while it's already open (that was wiping the "Saved" toast right after saving).
   useEffect(() => {
-    if (open && user) {
+    if (open && !wasOpen.current && user) {
       setNameDraft(user.name || '')
       setAvatarDraft(user.avatarUrl || '')
-      setSaved(false)
+      setPhoneDraft(user.phone || '')
+      setCityDraft(user.city || '')
+      setBioDraft(user.bio || '')
     }
+    wasOpen.current = open
   }, [open, user])
+
+  function showToast(msg) {
+    setToast(msg)
+    setTimeout(() => setToast(''), 2200)
+  }
 
   const initials = nameDraft
     ? nameDraft
@@ -45,24 +60,59 @@ export default function ProfileModal() {
     if (!file) return
     if (!file.type.startsWith('image/')) return
     const reader = new FileReader()
-    reader.onload = () => setAvatarDraft(reader.result)
+    reader.onload = () => {
+      setAvatarDraft(reader.result)
+      updateProfile({ avatarUrl: reader.result })
+      showToast('Display picture updated')
+    }
     reader.readAsDataURL(file)
   }
 
-  function handleSave() {
-    updateProfile({ name: nameDraft.trim() || user.name, avatarUrl: avatarDraft })
-    setSaved(true)
-    setTimeout(() => setSaved(false), 1800)
+  function handlePresetPick(src) {
+    setAvatarDraft(src)
+    updateProfile({ avatarUrl: src })
+    showToast('Avatar updated')
   }
+
+  function handleSave() {
+    updateProfile({
+      name: nameDraft.trim() || user.name,
+      avatarUrl: avatarDraft,
+      phone: phoneDraft.trim(),
+      city: cityDraft.trim(),
+      bio: bioDraft.trim(),
+    })
+    showToast('Profile saved')
+  }
+
+  const memberSince = user?.joinedAt
+    ? new Date(user.joinedAt).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })
+    : null
 
   return (
     <Modal open={open} onClose={closeModal} title="My profile" maxWidth="max-w-md">
       {!user ? (
         <p className="text-ink-muted py-8 text-center">Log in to see your profile.</p>
       ) : (
-        <div>
+        <div className="relative">
+          {/* Toast */}
+          <AnimatePresence>
+            {toast && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="absolute -top-1 left-0 right-0 z-10 flex justify-center"
+              >
+                <span className="inline-flex items-center gap-1.5 bg-ink text-white text-xs font-semibold px-3.5 py-2 rounded-full shadow-md">
+                  <FiCheck size={13} /> {toast}
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Avatar + upload */}
-          <div className="flex flex-col items-center mb-5">
+          <div className="flex flex-col items-center mb-5 pt-2">
             <div className="relative">
               {avatarDraft ? (
                 <img
@@ -91,18 +141,22 @@ export default function ProfileModal() {
                 className="hidden"
               />
             </div>
-            <p className="text-xs text-ink-subtle mt-2">Tap the camera icon to upload a photo</p>
+            {memberSince && (
+              <p className="text-xs text-ink-subtle mt-2 flex items-center gap-1">
+                <FiCalendar size={12} /> Member since {memberSince}
+              </p>
+            )}
           </div>
 
           {/* Avatar presets */}
           <div className="mb-5">
-            <div className="text-xs font-semibold text-ink-muted mb-2">Or choose an avatar</div>
+            <div className="text-xs font-semibold text-ink-muted mb-2">Choose an avatar</div>
             <div className="grid grid-cols-4 gap-2.5">
               {AVATAR_PRESETS.map((src) => (
                 <button
                   key={src}
                   type="button"
-                  onClick={() => setAvatarDraft(src)}
+                  onClick={() => handlePresetPick(src)}
                   className={`rounded-full overflow-hidden border-2 transition-colors ${
                     avatarDraft === src ? 'border-purple' : 'border-border hover:border-purple/50'
                   }`}
@@ -113,44 +167,92 @@ export default function ProfileModal() {
             </div>
           </div>
 
-          {/* Name field */}
-          <div className="mb-5">
-            <label htmlFor="profile-name" className="text-xs font-semibold text-ink-muted mb-1.5 block">
-              Name
-            </label>
-            <input
-              id="profile-name"
-              type="text"
-              value={nameDraft}
-              onChange={(e) => setNameDraft(e.target.value)}
-              className="input"
-              placeholder="Your name"
-            />
-            <div className="text-xs text-ink-subtle mt-1.5">{user.email}</div>
+          {/* Fields */}
+          <div className="mb-5 flex flex-col gap-3.5">
+            <div>
+              <label htmlFor="profile-name" className="text-xs font-semibold text-ink-muted mb-1.5 block">
+                Name
+              </label>
+              <input
+                id="profile-name"
+                type="text"
+                value={nameDraft}
+                onChange={(e) => setNameDraft(e.target.value)}
+                className="input"
+                placeholder="Your name"
+              />
+              <div className="text-xs text-ink-subtle mt-1.5">{user.email}</div>
+            </div>
+
+            <div>
+              <label htmlFor="profile-phone" className="text-xs font-semibold text-ink-muted mb-1.5 flex items-center gap-1.5">
+                <FiPhone size={12} /> Phone number
+              </label>
+              <input
+                id="profile-phone"
+                type="tel"
+                value={phoneDraft}
+                onChange={(e) => setPhoneDraft(e.target.value)}
+                className="input"
+                placeholder="e.g. 0803 123 4567"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="profile-city" className="text-xs font-semibold text-ink-muted mb-1.5 flex items-center gap-1.5">
+                <FiMapPin size={12} /> City
+              </label>
+              <input
+                id="profile-city"
+                type="text"
+                value={cityDraft}
+                onChange={(e) => setCityDraft(e.target.value)}
+                className="input"
+                placeholder="e.g. Lagos"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="profile-bio" className="text-xs font-semibold text-ink-muted mb-1.5 block">
+                About
+              </label>
+              <textarea
+                id="profile-bio"
+                value={bioDraft}
+                onChange={(e) => setBioDraft(e.target.value)}
+                className="textarea"
+                rows={3}
+                placeholder="Tell vendors a bit about the events you're planning…"
+              />
+            </div>
           </div>
 
-          {/* Stats */}
+          {/* Stats + quick links */}
           <div className="grid grid-cols-2 gap-3 mb-5">
-            <div className="bg-surface rounded-md p-4 text-center">
+            <button
+              onClick={() => openModal('saved')}
+              className="bg-surface rounded-md p-4 text-center hover:bg-purple-dim transition-colors group"
+            >
               <FiHeart className="mx-auto mb-1.5 text-purple" size={18} />
               <div className="text-xl font-bold">{savedVendorIds.length}</div>
-              <div className="text-xs text-ink-muted">Saved vendors</div>
-            </div>
-            <div className="bg-surface rounded-md p-4 text-center">
+              <div className="text-xs text-ink-muted flex items-center justify-center gap-1">
+                Saved vendors <FiArrowRight className="opacity-0 group-hover:opacity-100 transition-opacity" size={11} />
+              </div>
+            </button>
+            <button
+              onClick={() => openModal('bookings')}
+              className="bg-surface rounded-md p-4 text-center hover:bg-purple-dim transition-colors group"
+            >
               <FiClipboard className="mx-auto mb-1.5 text-purple" size={18} />
               <div className="text-xl font-bold">{bookings.length}</div>
-              <div className="text-xs text-ink-muted">Vendors contacted</div>
-            </div>
+              <div className="text-xs text-ink-muted flex items-center justify-center gap-1">
+                Vendors contacted <FiArrowRight className="opacity-0 group-hover:opacity-100 transition-opacity" size={11} />
+              </div>
+            </button>
           </div>
 
           <button onClick={handleSave} className="btn-purple w-full justify-center">
-            {saved ? (
-              <>
-                <FiCheck /> Saved
-              </>
-            ) : (
-              'Save changes'
-            )}
+            Save changes
           </button>
         </div>
       )}
