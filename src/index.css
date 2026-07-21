@@ -89,12 +89,25 @@ img {
 }
 
 .section-title-accent {
-  @apply text-purple;
-  text-shadow: 0 0 18px rgba(123, 47, 255, 0.35), 0 0 36px rgba(123, 47, 255, 0.15);
+  @apply text-swipe;
 }
 
-.text-glow-purple {
-  text-shadow: 0 0 18px rgba(123, 47, 255, 0.35), 0 0 36px rgba(123, 47, 255, 0.15);
+.text-swipe {
+  background-image: linear-gradient(100deg, #7b2fff 20%, #d4bbff 40%, #7b2fff 60%);
+  background-size: 220% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: text-swipe-anim 3.2s linear infinite;
+}
+
+@keyframes text-swipe-anim {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
 }
 
 .input {

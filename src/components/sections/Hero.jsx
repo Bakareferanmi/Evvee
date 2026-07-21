@@ -73,13 +73,8 @@ export default function Hero() {
             className="text-[clamp(2.2rem,7vw,4.2rem)] font-extrabold leading-[1.05] tracking-tight mb-5 max-w-xl"
           >
             Find the{' '}
-            <span
-              className="bg-clip-text text-transparent text-glow-purple"
-              style={{ backgroundImage: 'linear-gradient(100deg, #7B2FFF 10%, #9B5CFF 50%, #7B2FFF 90%)' }}
-            >
-              right vendor
-            </span>{' '}
-            for every <span className="text-lime-deep text-glow-purple">occasion.</span>
+            <span className="text-swipe">right vendor</span>{' '}
+            for every <span className="text-swipe">occasion.</span>
           </motion.h1>
 
           <motion.p
