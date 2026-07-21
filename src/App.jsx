@@ -16,6 +16,7 @@ import CategoryModal from './components/modals/CategoryModal'
 import BlogModal from './components/modals/BlogModal'
 import SavedVendorsModal from './components/modals/SavedVendorsModal'
 import BookingsModal from './components/modals/BookingsModal'
+import ProfileModal from './components/modals/ProfileModal'
 import BusinessOnboardingModal from './components/modals/BusinessOnboardingModal'
 import LegalModal from './components/modals/LegalModal'
 
@@ -46,6 +47,7 @@ export default function App() {
       <BlogModal />
       <SavedVendorsModal />
       <BookingsModal />
+      <ProfileModal />
       <BusinessOnboardingModal />
       <LegalModal />
     </>
