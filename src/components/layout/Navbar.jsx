@@ -112,7 +112,14 @@ export default function Navbar() {
                           <div className="text-xs text-ink-muted truncate">{user.email}</div>
                         </div>
                       </div>
-                      <MenuItem icon={<FiUser />} label="My profile" onClick={() => setDropdownOpen(false)} />
+                      <MenuItem
+                        icon={<FiUser />}
+                        label="My profile"
+                        onClick={() => {
+                          setDropdownOpen(false)
+                          openModal('profile')
+                        }}
+                      />
                       <MenuItem
                         icon={<FiHeart />}
                         label="Saved vendors"
