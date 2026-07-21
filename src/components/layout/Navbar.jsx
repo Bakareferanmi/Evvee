@@ -51,10 +51,6 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2.5">
-          <button className="btn-lime hidden sm:inline-flex" onClick={() => openModal('list-business')}>
-            List your business
-          </button>
-
           <div className="relative" ref={wrapRef}>
             <button
               aria-haspopup="true"

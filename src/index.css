@@ -61,7 +61,7 @@ img {
 }
 
 .btn-lime {
-  @apply btn bg-lime text-ink px-5 py-2.5 shadow-[0_4px_14px_rgba(92,122,0,0.16)] hover:bg-[#b8ef00] hover:shadow-[0_6px_18px_rgba(92,122,0,0.22)] hover:-translate-y-px;
+  @apply btn bg-lime text-white px-5 py-2.5 shadow-[0_4px_14px_rgba(92,122,0,0.16)] hover:bg-purple-deep hover:shadow-[0_6px_18px_rgba(92,122,0,0.22)] hover:-translate-y-px;
 }
 
 .btn-purple {
@@ -99,3 +99,4 @@ img {
 .textarea {
   @apply input resize-none;
 }
+

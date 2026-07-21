@@ -55,7 +55,6 @@ export default function VendorCard({ vendor, delay = 0 }) {
           <div className="flex items-center gap-1 text-xs mb-1.5">
             {vendor.rating_avg ? (
               <>
-                <FiStar className="fill-lime-deep text-lime-deep" size={13} />
                 <span className="font-semibold">{vendor.rating_avg.toFixed(1)}</span>
                 <span className="text-ink-subtle">({vendor.rating_count} reviews)</span>
               </>
