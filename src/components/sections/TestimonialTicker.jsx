@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { FiStar } from 'react-icons/fi'
 import Reveal from '../ui/Reveal'
 import { testimonials } from '../../data/testimonials'
 
@@ -60,11 +59,6 @@ export default function TestimonialTicker() {
                 {t.initials}
               </span>
               <div>
-                <div className="flex gap-0.5 text-lime-deep mb-0.5">
-                  {Array.from({ length: 5 }).map((_, s) => (
-                    <FiStar key={s} className="fill-lime-deep" size={12} />
-                  ))}
-                </div>
                 <div className="text-sm font-semibold">{t.name}</div>
               </div>
             </div>
