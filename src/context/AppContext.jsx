@@ -8,7 +8,7 @@ const AppContext = createContext(null)
  * API/Supabase calls later without touching any component.
  */
 export function AppProvider({ children }) {
-  const [user, setUser] = useState(null) // { name, email }
+  const [user, setUser] = useState(null) // { name, email, avatarUrl }
   const [savedVendorIds, setSavedVendorIds] = useState([])
   const [bookings, setBookings] = useState([])
   const [activeModal, setActiveModal] = useState(null) // 'login' | 'signup' | 'list-business' | 'bookings' | 'saved' | 'category' | 'blog' | null
@@ -31,6 +31,10 @@ export function AppProvider({ children }) {
 
   const logout = useCallback(() => setUser(null), [])
 
+  const updateProfile = useCallback((updates) => {
+    setUser((prev) => (prev ? { ...prev, ...updates } : prev))
+  }, [])
+
   const toggleSaveVendor = useCallback((vendorId) => {
     setSavedVendorIds((prev) =>
       prev.includes(vendorId) ? prev.filter((id) => id !== vendorId) : [...prev, vendorId]
@@ -46,6 +50,7 @@ export function AppProvider({ children }) {
       user,
       login,
       logout,
+      updateProfile,
       savedVendorIds,
       toggleSaveVendor,
       bookings,
@@ -55,7 +60,7 @@ export function AppProvider({ children }) {
       openModal,
       closeModal,
     }),
-    [user, login, logout, savedVendorIds, toggleSaveVendor, bookings, addBooking, activeModal, modalPayload, openModal, closeModal]
+    [user, login, logout, updateProfile, savedVendorIds, toggleSaveVendor, bookings, addBooking, activeModal, modalPayload, openModal, closeModal]
   )
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

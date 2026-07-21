@@ -59,9 +59,13 @@ export default function Navbar() {
               className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-purple transition-colors"
             >
               {user ? (
-                <span className="w-7 h-7 rounded-full bg-purple text-white text-xs font-bold flex items-center justify-center">
-                  {initials}
-                </span>
+                user.avatarUrl ? (
+                  <img src={user.avatarUrl} alt="" className="w-7 h-7 rounded-full object-cover" />
+                ) : (
+                  <span className="w-7 h-7 rounded-full bg-purple text-white text-xs font-bold flex items-center justify-center">
+                    {initials}
+                  </span>
+                )
               ) : (
                 <FiUser />
               )}
@@ -104,9 +108,13 @@ export default function Navbar() {
                   ) : (
                     <div>
                       <div className="flex items-center gap-3 pb-3 mb-2 border-b border-border">
-                        <span className="w-10 h-10 rounded-full bg-purple text-white font-bold flex items-center justify-center">
-                          {initials}
-                        </span>
+                        {user.avatarUrl ? (
+                          <img src={user.avatarUrl} alt="" className="w-10 h-10 rounded-full object-cover" />
+                        ) : (
+                          <span className="w-10 h-10 rounded-full bg-purple text-white font-bold flex items-center justify-center">
+                            {initials}
+                          </span>
+                        )}
                         <div className="min-w-0">
                           <div className="font-semibold truncate">{user.name}</div>
                           <div className="text-xs text-ink-muted truncate">{user.email}</div>
