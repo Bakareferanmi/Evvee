@@ -36,7 +36,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-[100] py-3.5 bg-white/80 backdrop-blur-md border-b border-black/[0.06]">
       <div className="container-evvee flex items-center justify-between">
         <a href="#" className="flex items-center">
-          <img src="/logo.png" alt="Evvee" className="h-12 w-auto object-contain" />
+          <img src="/logo.png" alt="Evvee" className="h-16 w-auto object-contain" />
         </a>
 
         <ul className="hidden md:flex gap-7 list-none">
