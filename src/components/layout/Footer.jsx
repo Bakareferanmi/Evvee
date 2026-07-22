@@ -26,10 +26,7 @@ export default function Footer() {
     <footer className="border-t border-border py-10">
       <div className="container-evvee">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-7">
-          <div className="text-xl font-extrabold tracking-tight">
-            <span className="text-ink">Ev</span>
-            <span className="text-lime-deep">vee</span>
-          </div>
+          <img src="/logo.png" alt="Evvee" className="h-11 w-auto object-contain" />
 
           <ul className="flex flex-wrap gap-5 list-none">
             {links.map((link) => (
