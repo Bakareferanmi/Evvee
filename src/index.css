@@ -2,12 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --c-bg: 255 255 255;
+  --c-surface: 247 247 245;
+  --c-elevated: 255 255 255;
+  --c-chip: 242 242 238;
+  --c-border: 231 231 226;
+  --c-ink: 21 21 29;
+  --c-ink-muted: 104 104 122;
+  --c-ink-subtle: 157 157 171;
+}
+
+.dark {
+  --c-bg: 18 17 24;
+  --c-surface: 28 26 36;
+  --c-elevated: 32 30 41;
+  --c-chip: 38 35 48;
+  --c-border: 50 46 62;
+  --c-ink: 241 239 245;
+  --c-ink-muted: 168 163 181;
+  --c-ink-subtle: 112 106 130;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-bg text-ink font-sans antialiased;
+  @apply bg-bg text-ink font-sans antialiased transition-colors duration-200;
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
@@ -111,9 +133,44 @@ img {
 }
 
 .input {
-  @apply w-full bg-white border border-border rounded-md px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-purple;
+  @apply w-full bg-elevated border border-border rounded-md px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-purple;
 }
 
 .textarea {
   @apply input resize-none;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgb(var(--c-chip));
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+.dark .skeleton::after {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { FiStar, FiMapPin, FiHeart, FiCheckCircle } from 'react-icons/fi'
 import { FaWhatsapp } from 'react-icons/fa6'
 import Reveal from '../ui/Reveal'
@@ -7,6 +8,7 @@ import { useApp } from '../../context/AppContext'
 export default function VendorCard({ vendor, delay = 0 }) {
   const { savedVendorIds, toggleSaveVendor, user, addBooking } = useApp()
   const saved = savedVendorIds.includes(vendor.id)
+  const [imgLoaded, setImgLoaded] = useState(false)
 
   const waMsg = encodeURIComponent(`Hi, I found you on Evvee and I'm interested in your ${vendor.category} services.`)
   const waLink = `https://wa.me/${vendor.whatsapp_number}?text=${waMsg}`
@@ -24,12 +26,19 @@ export default function VendorCard({ vendor, delay = 0 }) {
 
   return (
     <Reveal scale delay={delay}>
-      <div className="bg-white border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+      <div className="bg-elevated border border-border rounded-lg overflow-hidden hover:shadow-md hover:-translate-y-0.5 hover:border-purple/30 transition-all duration-200 ease-evvee">
         <div className="relative h-44">
-          <img src={vendor.cover_photo_url} alt={vendor.business_name} className="w-full h-full object-cover" loading="lazy" />
+          {!imgLoaded && <div className="skeleton absolute inset-0" />}
+          <img
+            src={vendor.cover_photo_url}
+            alt={vendor.business_name}
+            className={`w-full h-full object-cover transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+            loading="lazy"
+            onLoad={() => setImgLoaded(true)}
+          />
           <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/40 to-transparent" />
           <div className="absolute top-2.5 left-2.5 flex gap-1.5">
-            {vendor.is_featured && <Badge tint="lime" icon={<FiStar size={11} />} label="Featured" />}
+            {vendor.is_featured && <Badge tint="gold" icon={<FiStar size={11} />} label="Featured" />}
             {vendor.is_verified && <Badge tint="purple" icon={<FiCheckCircle size={11} />} label="Verified" />}
           </div>
           <button
@@ -51,7 +60,7 @@ export default function VendorCard({ vendor, delay = 0 }) {
               <FiMapPin size={11} /> {vendor.city}
             </span>
           </div>
-          <div className="font-bold mb-1">{vendor.business_name}</div>
+          <div className="font-bold mb-1 group-hover:text-purple">{vendor.business_name}</div>
           <div className="flex items-center gap-1 text-xs mb-1.5">
             {vendor.rating_avg ? (
               <>
@@ -94,7 +103,7 @@ function Badge({ tint, icon, label }) {
   return (
     <span
       className={`inline-flex items-center gap-1 text-[0.68rem] font-semibold px-2 py-1 rounded-full ${
-        tint === 'lime' ? 'bg-lime text-white' : 'bg-purple text-white'
+        tint === 'gold' ? 'bg-gold text-white' : 'bg-purple text-white'
       }`}
     >
       {icon} {label}
