@@ -105,7 +105,7 @@ export default function Hero() {
             initial="hidden"
             animate="show"
             variants={fadeUp}
-            className="bg-white border border-border rounded-lg shadow-sm p-2 mb-6"
+            className="bg-elevated border border-border rounded-lg shadow-sm p-2 mb-6"
           >
             <div className="flex items-center gap-2 px-2 py-1.5">
               <FiSearch className="text-ink-subtle" />
@@ -116,7 +116,7 @@ export default function Hero() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search photographers, DJs, caterers…"
                 aria-label="Search vendors"
-                className="flex-1 text-sm outline-none placeholder:text-ink-subtle"
+                className="flex-1 text-sm outline-none placeholder:text-ink-subtle bg-transparent text-ink"
               />
             </div>
             <div className="flex items-center gap-2 border-t border-border px-2 pt-2 mt-1 flex-wrap">
@@ -167,7 +167,7 @@ export default function Hero() {
               <img src={collage[3]} alt="" className="rounded-lg h-64 object-cover" loading="lazy" />
             </div>
           </div>
-          <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-white shadow-md rounded-full px-4 py-2.5 flex items-center gap-2 text-sm font-medium whitespace-nowrap">
+          <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-elevated shadow-md rounded-full px-4 py-2.5 flex items-center gap-2 text-sm font-medium whitespace-nowrap">
             <span className="flex items-center gap-1 text-lime-deep font-bold">
               <FiStar className="fill-lime-deep" /> 4.9
             </span>

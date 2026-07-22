@@ -51,7 +51,7 @@ export default function ListBusinessCTA() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@email.com"
-                className="flex-1 min-w-[200px] bg-white border border-border rounded-full px-4 py-2.5 text-sm outline-none focus:border-purple"
+                className="flex-1 min-w-[200px] bg-elevated text-ink border border-border rounded-full px-4 py-2.5 text-sm outline-none focus:border-purple"
               />
               <button type="submit" className="btn-purple">
                 Subscribe

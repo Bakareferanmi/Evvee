@@ -48,7 +48,7 @@ export default function TestimonialTicker() {
         {doubled.map((t, i) => (
           <div
             key={`${t.name}-${i}`}
-            className="w-80 shrink-0 bg-white border border-border rounded-lg p-5 mx-2.5"
+            className="w-80 shrink-0 bg-elevated text-ink border border-border rounded-lg p-5 mx-2.5"
           >
             <div className="flex gap-2 mb-3">
               <span

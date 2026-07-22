@@ -20,7 +20,7 @@ export default function ChatWidget() {
             initial={{ opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.96 }}
-            className="w-72 bg-white border border-border rounded-lg shadow-md p-4"
+            className="w-72 bg-elevated text-ink border border-border rounded-lg shadow-md p-4"
           >
             <div className="flex items-center gap-2 mb-2">
               <span className="w-8 h-8 rounded-full bg-purple text-white flex items-center justify-center text-sm font-bold">
@@ -43,7 +43,7 @@ export default function ChatWidget() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
-            className="max-w-[220px] bg-white border border-border rounded-lg shadow-sm px-3.5 py-2.5 text-sm relative"
+            className="max-w-[220px] bg-elevated text-ink border border-border rounded-lg shadow-sm px-3.5 py-2.5 text-sm relative"
           >
             <button
               aria-label="Dismiss"
@@ -51,7 +51,7 @@ export default function ChatWidget() {
                 e.stopPropagation()
                 setDismissed(true)
               }}
-              className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-white border border-border rounded-full flex items-center justify-center text-ink-subtle"
+              className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-elevated border border-border rounded-full flex items-center justify-center text-ink-subtle"
             >
               <FiX size={10} />
             </button>
@@ -70,3 +70,4 @@ export default function ChatWidget() {
     </div>
   )
 }
+

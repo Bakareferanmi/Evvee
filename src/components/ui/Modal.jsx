@@ -25,7 +25,7 @@ export default function Modal({ open, onClose, children, maxWidth = 'max-w-lg', 
           onClick={onClose}
         >
           <motion.div
-            className={`w-full ${maxWidth} bg-white rounded-t-lg sm:rounded-lg shadow-md max-h-[90vh] overflow-y-auto`}
+            className={`w-full ${maxWidth} bg-elevated text-ink rounded-t-lg sm:rounded-lg shadow-md max-h-[90vh] overflow-y-auto`}
             initial={{ y: 40, opacity: 0, scale: 0.98 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 20, opacity: 0, scale: 0.98 }}

@@ -46,7 +46,7 @@ export default function VendorCard({ vendor, delay = 0 }) {
             aria-pressed={saved}
             onClick={() => toggleSaveVendor(vendor.id)}
             className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-              saved ? 'bg-purple text-white' : 'bg-white/85 text-ink hover:bg-white'
+              saved ? 'bg-purple text-white' : 'bg-elevated/85 text-ink hover:bg-elevated'
             }`}
           >
             <FiHeart className={saved ? 'fill-current' : ''} size={15} />
@@ -60,7 +60,7 @@ export default function VendorCard({ vendor, delay = 0 }) {
               <FiMapPin size={11} /> {vendor.city}
             </span>
           </div>
-          <div className="font-bold mb-1 group-hover:text-purple">{vendor.business_name}</div>
+          <div className="font-bold mb-1">{vendor.business_name}</div>
           <div className="flex items-center gap-1 text-xs mb-1.5">
             {vendor.rating_avg ? (
               <>

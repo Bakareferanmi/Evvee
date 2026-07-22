@@ -27,7 +27,7 @@ export default function CookieConsent() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 40 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:max-w-sm z-[150] bg-white border border-border shadow-md rounded-lg p-4"
+          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:max-w-sm z-[150] bg-elevated text-ink border border-border shadow-md rounded-lg p-4"
         >
           <p className="text-sm text-ink-muted mb-3">
             We use cookies to remember your saved vendors and keep search fast. That&apos;s it.

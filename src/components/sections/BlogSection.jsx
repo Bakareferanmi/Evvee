@@ -30,7 +30,7 @@ export default function BlogSection() {
           <Reveal>
             <button
               onClick={() => openModal('blog', featured)}
-              className="text-left w-full bg-white border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
+              className="text-left w-full bg-elevated border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
             >
               <img src={featured.image} alt="" className="w-full h-56 object-cover" loading="lazy" />
               <div className="p-5">
@@ -47,7 +47,7 @@ export default function BlogSection() {
               <Reveal key={post.slug} delay={i * 0.06}>
                 <button
                   onClick={() => openModal('blog', post)}
-                  className="text-left w-full bg-white border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col"
+                  className="text-left w-full bg-elevated border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col"
                 >
                   <img src={post.image} alt="" className="w-full h-32 object-cover" loading="lazy" />
                   <div className="p-4 flex-1">

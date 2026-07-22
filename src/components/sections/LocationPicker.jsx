@@ -53,7 +53,7 @@ export default function LocationPicker({ location, onChange }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15 }}
-            className="absolute top-full left-0 mt-2 w-56 max-h-80 overflow-y-auto bg-white border border-border rounded-md shadow-md p-2 z-20 list-none"
+            className="absolute top-full left-0 mt-2 w-56 max-h-80 overflow-y-auto bg-elevated border border-border rounded-md shadow-md p-2 z-20 list-none"
           >
             <Option label="🇳🇬 All Nigeria" active={location === 'All Nigeria'} onClick={() => select('All Nigeria')} />
             <li className="text-[0.7rem] uppercase tracking-wide text-ink-subtle px-2 pt-2 pb-1">Popular</li>

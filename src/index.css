@@ -16,12 +16,12 @@
 .dark {
   --c-bg: 18 17 24;
   --c-surface: 28 26 36;
-  --c-elevated: 32 30 41;
-  --c-chip: 38 35 48;
-  --c-border: 50 46 62;
-  --c-ink: 241 239 245;
-  --c-ink-muted: 168 163 181;
-  --c-ink-subtle: 112 106 130;
+  --c-elevated: 34 31 44;
+  --c-chip: 40 37 52;
+  --c-border: 66 60 86;
+  --c-ink: 245 244 248;
+  --c-ink-muted: 178 173 192;
+  --c-ink-subtle: 134 128 152;
 }
 
 html {
@@ -173,4 +173,9 @@ img {
   100% {
     transform: translateX(100%);
   }
+}
+
+.dark .shadow-sm,
+.dark .shadow-md {
+  box-shadow: 0 0 0 1px rgb(var(--c-border) / 0.6), 0 8px 20px rgba(0, 0, 0, 0.35);
 }
