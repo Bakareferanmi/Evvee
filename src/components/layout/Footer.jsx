@@ -64,7 +64,15 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mt-8 pt-6 border-t border-border text-center sm:text-left">
           <div className="text-[0.78rem] text-ink-subtle font-mono">© 2026 Evvee · Nigeria</div>
           <div className="text-[0.78rem] text-ink-subtle font-mono">
-            Built with ♥️ <strong>BeepeeLabs</strong>
+            Built with ♥️{' '}
+            <a
+              href="https://beepeelabs.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:text-purple transition-colors"
+            >
+              BeepeeLabs
+            </a>
           </div>
         </div>
       </div>
