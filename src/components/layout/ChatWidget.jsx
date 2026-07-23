@@ -13,28 +13,26 @@ const messages = [
 function RobotMascot({ size = 44 }) {
   return (
     <svg viewBox="0 0 64 64" width={size} height={size} aria-hidden="true">
-      <line x1="44" y1="6" x2="48" y2="2" stroke="#C9C4D6" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="48" cy="2" r="2.4" fill="#7B2FFF" />
-      <circle cx="24" cy="14" r="6" fill="#7B2FFF" />
-      <circle cx="40" cy="14" r="6" fill="#7B2FFF" />
-      <rect x="26" y="9" width="12" height="5" rx="2.5" fill="#7B2FFF" />
+      <line x1="44" y1="6" x2="48" y2="2" stroke="#E4DEF2" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="48" cy="2" r="2.4" fill="#C79CFF" />
+      <circle cx="24" cy="14" r="6" fill="#C79CFF" />
+      <circle cx="40" cy="14" r="6" fill="#C79CFF" />
+      <rect x="26" y="9" width="12" height="5" rx="2.5" fill="#C79CFF" />
       <circle cx="32" cy="24" r="19" fill="#FFFFFF" />
-      <circle cx="32" cy="24" r="19" fill="none" stroke="#E7E7E2" strokeWidth="1" />
-      <ellipse cx="32" cy="25.5" rx="13" ry="12" fill="#12101A" stroke="#7B2FFF" strokeWidth="2.5" />
-      <rect x="24" y="21" width="4.5" height="8" rx="1.6" fill="#AEF2E8" />
-      <rect x="35.5" y="21" width="4.5" height="8" rx="1.6" fill="#AEF2E8" />
-      <circle cx="32" cy="32.5" r="1.6" fill="#AEF2E8" />
+      <ellipse cx="32" cy="25.5" rx="13" ry="12" fill="#0B0912" stroke="#B57BFF" strokeWidth="2.5" />
+      <rect x="24" y="21" width="4.5" height="8" rx="1.6" fill="#8FF5E8" />
+      <rect x="35.5" y="21" width="4.5" height="8" rx="1.6" fill="#8FF5E8" />
+      <circle cx="32" cy="32.5" r="1.6" fill="#8FF5E8" />
       <path
         d="M14 47 C14 37 21.5 32 32 32 C42.5 32 50 37 50 47 L50 50 C50 52.2 48.2 54 46 54 L18 54 C15.8 54 14 52.2 14 50 Z"
         fill="#FFFFFF"
-        stroke="#E7E7E2"
       />
-      <path d="M18 34 L14 47 L20 47 L23 36 Z" fill="#7B2FFF" />
-      <path d="M46 34 L50 47 L44 47 L41 36 Z" fill="#7B2FFF" />
-      <rect x="26" y="39" width="12" height="10" rx="3" fill="#F5F0FF" stroke="#7B2FFF" strokeWidth="1.4" />
-      <rect x="29" y="42" width="4.5" height="4.5" rx="1" fill="#7B2FFF" />
-      <circle cx="36" cy="43" r="1.1" fill="#7B2FFF" />
-      <circle cx="36" cy="46" r="1.1" fill="#7B2FFF" />
+      <path d="M18 34 L14 47 L20 47 L23 36 Z" fill="#C79CFF" />
+      <path d="M46 34 L50 47 L44 47 L41 36 Z" fill="#C79CFF" />
+      <rect x="26" y="39" width="12" height="10" rx="3" fill="#F5F0FF" stroke="#B57BFF" strokeWidth="1.4" />
+      <rect x="29" y="42" width="4.5" height="4.5" rx="1" fill="#B57BFF" />
+      <circle cx="36" cy="43" r="1.1" fill="#B57BFF" />
+      <circle cx="36" cy="46" r="1.1" fill="#B57BFF" />
     </svg>
   )
 }
@@ -74,8 +72,8 @@ export default function ChatWidget() {
             className="w-72 bg-elevated text-ink border border-border rounded-lg shadow-md p-4"
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-9 h-9 rounded-full bg-purple-dim flex items-center justify-center shrink-0">
-                <RobotMascot size={26} />
+              <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-ink to-purple-deep flex items-center justify-center shrink-0">
+                <RobotMascot size={28} />
               </span>
               <div>
                 <div className="text-sm font-semibold">Feranmi</div>
@@ -111,9 +109,9 @@ export default function ChatWidget() {
       <button
         onClick={handleToggle}
         aria-label="Open Evvee assistant"
-        className="w-[56px] h-[56px] rounded-full bg-white shadow-md flex items-center justify-center hover:scale-105 transition-transform border-2 border-purple/20"
+        className="w-[60px] h-[60px] rounded-2xl bg-gradient-to-br from-ink to-purple-deep shadow-md flex items-center justify-center hover:scale-105 transition-transform border border-purple/40"
       >
-        {open ? <FiX size={22} className="text-purple" /> : <RobotMascot size={38} />}
+        {open ? <FiX size={22} className="text-white" /> : <RobotMascot size={42} />}
       </button>
     </div>
   )
