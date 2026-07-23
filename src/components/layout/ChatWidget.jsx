@@ -1,17 +1,67 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiX } from 'react-icons/fi'
-import { TbRobot } from 'react-icons/tb'
+
+const messages = [
+  "Hey! Planning an event? Tell me what you need — photographer, caterer, DJ — and I'll point you to the right category.",
+  "Looking for a vendor in a specific city? I can help you narrow it down by location.",
+  "Need a quick recommendation? Tell me your event type and budget, and I'll steer you the right way.",
+  "Stuck choosing between vendors? Check reviews and ratings before you reach out on WhatsApp.",
+  "Vendors on Evvee never charge a booking fee — you deal with them directly. Anything I can help you find?",
+]
+
+function RobotMascot({ size = 44 }) {
+  return (
+    <svg viewBox="0 0 64 64" width={size} height={size} aria-hidden="true">
+      <line x1="44" y1="6" x2="48" y2="2" stroke="#C9C4D6" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="48" cy="2" r="2.4" fill="#7B2FFF" />
+      <circle cx="24" cy="14" r="6" fill="#7B2FFF" />
+      <circle cx="40" cy="14" r="6" fill="#7B2FFF" />
+      <rect x="26" y="9" width="12" height="5" rx="2.5" fill="#7B2FFF" />
+      <circle cx="32" cy="24" r="19" fill="#FFFFFF" />
+      <circle cx="32" cy="24" r="19" fill="none" stroke="#E7E7E2" strokeWidth="1" />
+      <ellipse cx="32" cy="25.5" rx="13" ry="12" fill="#12101A" stroke="#7B2FFF" strokeWidth="2.5" />
+      <rect x="24" y="21" width="4.5" height="8" rx="1.6" fill="#AEF2E8" />
+      <rect x="35.5" y="21" width="4.5" height="8" rx="1.6" fill="#AEF2E8" />
+      <circle cx="32" cy="32.5" r="1.6" fill="#AEF2E8" />
+      <path
+        d="M14 47 C14 37 21.5 32 32 32 C42.5 32 50 37 50 47 L50 50 C50 52.2 48.2 54 46 54 L18 54 C15.8 54 14 52.2 14 50 Z"
+        fill="#FFFFFF"
+        stroke="#E7E7E2"
+      />
+      <path d="M18 34 L14 47 L20 47 L23 36 Z" fill="#7B2FFF" />
+      <path d="M46 34 L50 47 L44 47 L41 36 Z" fill="#7B2FFF" />
+      <rect x="26" y="39" width="12" height="10" rx="3" fill="#F5F0FF" stroke="#7B2FFF" strokeWidth="1.4" />
+      <rect x="29" y="42" width="4.5" height="4.5" rx="1" fill="#7B2FFF" />
+      <circle cx="36" cy="43" r="1.1" fill="#7B2FFF" />
+      <circle cx="36" cy="46" r="1.1" fill="#7B2FFF" />
+    </svg>
+  )
+}
 
 export default function ChatWidget() {
   const [bubbleVisible, setBubbleVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)
   const [open, setOpen] = useState(false)
+  const [messageIndex, setMessageIndex] = useState(0)
+  const lastIndex = useRef(0)
 
   useEffect(() => {
     const t = setTimeout(() => setBubbleVisible(true), 4000)
     return () => clearTimeout(t)
   }, [])
+
+  function handleToggle() {
+    if (!open) {
+      let next = Math.floor(Math.random() * messages.length)
+      if (messages.length > 1 && next === lastIndex.current) {
+        next = (next + 1) % messages.length
+      }
+      lastIndex.current = next
+      setMessageIndex(next)
+    }
+    setOpen((o) => !o)
+  }
 
   return (
     <div className="fixed bottom-4 right-4 z-[140] flex flex-col items-end gap-3">
@@ -24,18 +74,15 @@ export default function ChatWidget() {
             className="w-72 bg-elevated text-ink border border-border rounded-lg shadow-md p-4"
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-8 h-8 rounded-full bg-purple text-white flex items-center justify-center text-sm font-bold">
-                <TbRobot size={18} />
+              <span className="w-9 h-9 rounded-full bg-purple-dim flex items-center justify-center shrink-0">
+                <RobotMascot size={26} />
               </span>
               <div>
                 <div className="text-sm font-semibold">Feranmi</div>
                 <div className="text-xs text-ink-subtle">Evvee assistant</div>
               </div>
             </div>
-            <p className="text-sm text-ink-muted leading-relaxed">
-              Hey! Planning an event? Tell me what you need — photographer, caterer, DJ — and I&apos;ll point you to the
-              right category.
-            </p>
+            <p className="text-sm text-ink-muted leading-relaxed">{messages[messageIndex]}</p>
           </motion.div>
         )}
 
@@ -62,11 +109,11 @@ export default function ChatWidget() {
       </AnimatePresence>
 
       <button
-        onClick={() => setOpen((o) => !o)}
+        onClick={handleToggle}
         aria-label="Open Evvee assistant"
-        className="w-[52px] h-[52px] rounded-full bg-purple text-white shadow-md flex items-center justify-center text-xl hover:bg-purple-deep transition-colors"
+        className="w-[56px] h-[56px] rounded-full bg-white shadow-md flex items-center justify-center hover:scale-105 transition-transform border-2 border-purple/20"
       >
-        {open ? <FiX /> : <TbRobot size={24} />}
+        {open ? <FiX size={22} className="text-purple" /> : <RobotMascot size={38} />}
       </button>
     </div>
   )
