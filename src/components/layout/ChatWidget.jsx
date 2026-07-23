@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { FiMessageCircle, FiX } from 'react-icons/fi'
+import { FiX } from 'react-icons/fi'
+import { TbRobot } from 'react-icons/tb'
 
 export default function ChatWidget() {
   const [bubbleVisible, setBubbleVisible] = useState(false)
@@ -24,7 +25,7 @@ export default function ChatWidget() {
           >
             <div className="flex items-center gap-2 mb-2">
               <span className="w-8 h-8 rounded-full bg-purple text-white flex items-center justify-center text-sm font-bold">
-                F
+                <TbRobot size={18} />
               </span>
               <div>
                 <div className="text-sm font-semibold">Feranmi</div>
@@ -65,9 +66,8 @@ export default function ChatWidget() {
         aria-label="Open Evvee assistant"
         className="w-[52px] h-[52px] rounded-full bg-purple text-white shadow-md flex items-center justify-center text-xl hover:bg-purple-deep transition-colors"
       >
-        {open ? <FiX /> : <FiMessageCircle />}
+        {open ? <FiX /> : <TbRobot size={24} />}
       </button>
     </div>
   )
 }
-
